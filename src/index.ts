@@ -18,6 +18,8 @@ const main = async () => {
 
   const app = Express();
 
+  await apolloServer.start();
+
   apolloServer.applyMiddleware({ app });
 
   app.listen(4000, () => {
