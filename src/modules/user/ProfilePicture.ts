@@ -17,6 +17,7 @@ export class ProfilePictureResolver {
       createReadStream()
         .pipe(createWriteStream(__dirname + `/../../../images/${filename}`))
         .on('finish', () => resolve(true))
+        .on('close', () => resolve(true))
         .on('error', () => reject(false))
     );
   }
