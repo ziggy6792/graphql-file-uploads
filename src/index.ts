@@ -1,17 +1,13 @@
 import 'reflect-metadata';
 import { ApolloServer } from 'apollo-server-express';
-import Express from 'express';
+import * as Express from 'express';
 import { buildSchema } from 'type-graphql';
 import { graphqlUploadExpress } from 'graphql-upload';
-
-// import { createConnection } from "typeorm";
 
 import { RegisterResolver } from './modules/user/Register';
 import { ProfilePictureResolver } from './modules/user/ProfilePicture';
 
 const main = async () => {
-  // await createConnection();
-
   const schema = await buildSchema({
     resolvers: [RegisterResolver, ProfilePictureResolver],
   });
@@ -19,7 +15,7 @@ const main = async () => {
   const apolloServer = new ApolloServer({ schema });
 
   const app = Express();
-  app.use(graphqlUploadExpress({ maxFileSize: 10000000, maxFiles: 10 }));
+  app.use(graphqlUploadExpress({ maxFileSize: 10000000, maxFiles: 10 }) as any);
 
   await apolloServer.start();
 
