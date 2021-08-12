@@ -1,67 +1,63 @@
-/* eslint-disable class-methods-use-this */
+// External modules
 const path = require('path');
-const fs = require('fs');
-const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
 
-const mode = process.env.NODE_ENV || 'development';
+// Webpack plugins
+const NodemonPlugin = require('nodemon-webpack-plugin');
+const ForkTsCheckerPlugin = require('fork-ts-checker-webpack-plugin');
 
-module.exports = () => {
-  const SOURCE_DIR = path.join(__dirname, './src/');
-  const TARGET_DIR = path.join(__dirname, './dist/');
+// Environment config
+const isDevelopment = process.env.NODE_ENV !== 'production';
+const mode = isDevelopment ? 'development' : 'production';
 
-  const filename = 'index.js';
-  const entry = path.join(SOURCE_DIR, 'index.ts');
-
-  const plugins = [];
-
-  return {
-    node: {
-      global: false,
-      __filename: false,
-      __dirname: false,
-    },
-    mode,
-    devtool: 'source-map',
-    entry,
-    target: 'node',
-    resolve: {
-      extensions: ['.mjs', '.ts', '.js'],
-      plugins: [
-        new TsconfigPathsPlugin({
-          /* options: see below */
-        }),
-      ],
-    },
-    output: {
-      libraryTarget: 'commonjs2',
-      path: TARGET_DIR,
-      filename,
-    },
-    module: {
-      rules: [
-        {
-          type: 'javascript/auto',
-          test: /\.mjs$/,
-          // resolve: {
-          //   fullySpecified: false,
-          // },
-        },
-        {
-          test: /.tsx?$/,
-          use: [
-            {
-              loader: 'ts-loader',
-              options: {
-                configFile: 'tsconfig.json',
-              },
-            },
-          ],
-        },
-      ],
-    },
-    plugins,
-    optimization: {
-      minimize: false,
-    },
-  };
+// Bundle config options
+const BUNDLE = {
+  entry: './src/index.ts',
+  output: {
+    filename: 'index.js',
+    path: path.resolve(__dirname, 'dist'),
+  },
 };
+
+module.exports = {
+  mode,
+  target: 'node',
+  entry: BUNDLE.entry,
+  stats: 'errors-only',
+  module: getLoaders(),
+  plugins: getPlugins(),
+  resolve: {
+    extensions: ['.tsx', '.ts', '.js', '.json'],
+  },
+  output: BUNDLE.output,
+};
+
+/**
+ * Loaders used by the application.
+ */
+function getLoaders() {
+  const esbuild = {
+    test: /\.(js|jsx|ts|tsx)?$/,
+    loader: 'esbuild-loader',
+    options: {
+      loader: 'ts',
+      target: 'es2015',
+    },
+    exclude: /node_modules/,
+  };
+
+  const loaders = {
+    rules: [esbuild],
+  };
+
+  return loaders;
+}
+
+/**
+ * Plugins
+ */
+function getPlugins() {
+  const nodemon = new NodemonPlugin();
+  const tsChecker = new ForkTsCheckerPlugin();
+
+  return [tsChecker, nodemon];
+}
