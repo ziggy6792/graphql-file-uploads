@@ -6,7 +6,7 @@ import { User } from '../../entity/User';
 export class RegisterResolver {
   @Query(() => String)
   async hello() {
-    return 'Hello World!';
+    return 'Hello Worldy';
   }
 
   @FieldResolver()
