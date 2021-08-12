@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "esModuleInterop": true,
     "target": "es6",
     "module": "commonjs",
     "lib": ["dom", "es6", "es2017", "esnext.asynciterable"],
@@ -8,7 +9,7 @@
     "baseUrl": "./",
     "sourceMap": true,
     "moduleResolution": "node",
-    "declaration": false,
+    "declaration": true,
 
     "composite": false,
     "removeComments": true,
@@ -23,6 +24,7 @@
     "allowSyntheticDefaultImports": true,
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
+
     "skipLibCheck": true
   },
   "exclude": ["node_modules"],
