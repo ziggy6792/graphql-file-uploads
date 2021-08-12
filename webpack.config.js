@@ -26,6 +26,7 @@ module.exports = () => {
     target: 'node',
     resolve: {
       extensions: ['.mjs', '.ts', '.js'],
+      mainFields: ['main'],
       plugins: [
         new TsconfigPathsPlugin({
           /* options: see below */
