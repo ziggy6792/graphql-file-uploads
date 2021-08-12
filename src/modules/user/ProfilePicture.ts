@@ -15,7 +15,7 @@ export class ProfilePictureResolver {
     const { createReadStream, filename } = upload;
     return new Promise(async (resolve, reject) =>
       createReadStream()
-        .pipe(createWriteStream(__dirname + `/../../../images/${filename}`))
+        .pipe(createWriteStream(__dirname + `/../../../images/${new Date().getTime()}_${filename}`))
         .on('finish', () => resolve(true))
         .on('close', () => resolve(true))
         .on('error', () => reject(false))
