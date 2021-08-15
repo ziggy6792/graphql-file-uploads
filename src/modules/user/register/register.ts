@@ -1,6 +1,6 @@
 import { Resolver, Query, Mutation, Arg, FieldResolver, Root } from 'type-graphql';
 
-import { User } from '../../entity/User';
+import { User } from '../../../entity/User';
 
 @Resolver(User)
 export class RegisterResolver {

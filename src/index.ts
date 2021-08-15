@@ -4,8 +4,8 @@ import * as Express from 'express';
 import { buildSchema } from 'type-graphql';
 import { graphqlUploadExpress } from 'graphql-upload';
 
-import { RegisterResolver } from './modules/user/Register';
-import { ProfilePictureResolver } from './modules/user/ProfilePicture';
+import { RegisterResolver } from 'src/modules/user/register/index';
+import { ProfilePictureResolver } from 'src/modules/user/ProfilePicture';
 
 const main = async () => {
   const schema = await buildSchema({
