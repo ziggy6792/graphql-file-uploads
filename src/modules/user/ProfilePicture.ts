@@ -1,7 +1,7 @@
 import { Resolver, Mutation, Arg } from 'type-graphql';
 import { GraphQLUpload, FileUpload } from 'graphql-upload';
 import { createWriteStream } from 'fs';
-import { ROOT_DIR } from 'src/config/config';
+import { ROOT_DIR } from 'src/config';
 
 // import { FileUpload } from '../../types/file-upload';
 
