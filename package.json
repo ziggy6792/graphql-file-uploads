@@ -10,7 +10,8 @@
     "build": "npx ttsc",
     "nodemon": "nodemon",
     "run:local": "node dist/index.js",
-    "test": "cd test && ./addProfilePicture.sh"
+    "test": "cd test && ./addProfilePicture.sh",
+    "start:old": "node dist/index.js"
   },
   "dependencies": {
     "@types/graphql-upload": "^8.0.6",
