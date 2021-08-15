@@ -1,5 +1,0 @@
-{
-  "watch": ["./dist/**"],
-  "exec": "yarn run:local",
-  "ext": "js, json"
-}
