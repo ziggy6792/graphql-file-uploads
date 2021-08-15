@@ -5,7 +5,7 @@
   "license": "MIT",
   "scripts": {
     "start:ts:node": "nodemon --exec ts-node src/index.ts",
-    "start": "run-p watch run:local",
+    "start": "run-p watch nodemon",
     "watch": "npx ttsc -w",
     "build": "npx ttsc",
     "nodemon": "nodemon",
