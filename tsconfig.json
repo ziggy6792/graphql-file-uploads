@@ -6,13 +6,9 @@
     "rootDir": "./src",
     "outDir": "./dist",
     "baseUrl": "./",
-    "paths": {
-      "src/*": ["./src/*"]
-    },
     "sourceMap": true,
     "moduleResolution": "node",
     "declaration": false,
-
     "composite": false,
     "removeComments": true,
     "noImplicitAny": true,
@@ -23,11 +19,14 @@
     "noUnusedParameters": false,
     "noImplicitReturns": true,
     "noFallthroughCasesInSwitch": true,
-    "allowSyntheticDefaultImports": true,
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
-    "esModuleInterop": true,
     "skipLibCheck": true,
+    "paths": {
+      "src/*": ["./src/*"]
+    },
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
     "plugins": [
       {
         "transform": "typescript-transform-paths"
