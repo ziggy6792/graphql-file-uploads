@@ -1,15 +1,19 @@
 const esbuild = require('esbuild');
-const { nodeExternalsPlugin } = require('esbuild-node-externals');
+// const { nodeExternalsPlugin } = require('esbuild-node-externals');
 const { esbuildDecorators } = require('@anatine/esbuild-decorators');
 
 esbuild
   .build({
     entryPoints: ['./src/index.ts'],
-    outfile: 'dist/index.js',
+    outdir: 'dist',
     bundle: true,
     platform: 'node',
     sourcemap: true,
     target: 'node14',
-    plugins: [nodeExternalsPlugin(), esbuildDecorators()],
+
+    plugins: [esbuildDecorators()],
   })
-  .catch(() => process.exit(1));
+  .catch((err) => {
+    console.log(err);
+    process.exit(1);
+  });
