@@ -26,6 +26,10 @@ module.exports = () => {
     target: 'node',
     resolve: {
       extensions: ['.mjs', '.ts', '.js'],
+      alias: {
+        graphql$: path.resolve(__dirname, './node_modules/graphql/index.js'),
+        isobject$: path.resolve(__dirname, './node_modules/isobject/index.cjs.js'),
+      },
       plugins: [
         new TsconfigPathsPlugin({
           /* options: see below */
