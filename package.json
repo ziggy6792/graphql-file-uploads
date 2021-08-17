@@ -9,6 +9,8 @@
     "watch": "webpack --config ./webpack.config.js --watch",
     "build": "webpack --config ./webpack.config.js",
     "run:local": "nodemon ./dist/index.js",
+    "docker:build": "docker build -t graphql-file-uploads .",
+    "docker:run": "docker run -p 4000:4000 graphql-file-uploads",
     "test": "cd test && ./addProfilePicture.sh"
   },
   "dependencies": {
