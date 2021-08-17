@@ -2,10 +2,7 @@
 # FROM node:alpine 
 FROM node:alpine
 WORKDIR /my-project
-COPY ./package.json .
-
 COPY . .
-
 RUN yarn install
 RUN yarn build
 
