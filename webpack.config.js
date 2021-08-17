@@ -5,6 +5,9 @@ const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
 
 const mode = process.env.NODE_ENV || 'development';
 
+console.log('graphql', path.resolve(__dirname, './node_modules/graphql/index.js'));
+console.log('isobject', path.resolve(__dirname, './node_modules/isobject/index.cjs.js'));
+
 module.exports = () => {
   const SOURCE_DIR = path.join(__dirname, './src/');
   const TARGET_DIR = path.join(__dirname, './dist/');
