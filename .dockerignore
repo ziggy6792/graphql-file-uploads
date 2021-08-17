@@ -1,0 +1,11 @@
+# ToDo: should be able to do this but it doesn't work with cdk
+# *
+# !./package.json
+# !./packages/web-app/package.json
+# !./packages/ui-library/package.json
+# !./packages/web-app/.next
+# !./packages/web-app/next.config.js
+# !./packages/web-app/public
+# !./packages/ui-library/dist
+
+node_modules
